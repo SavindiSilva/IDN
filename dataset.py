@@ -15,7 +15,7 @@ if sys.version_info[0] == 2:
 else:
     import pickle
 
-from torchvision.datasets.utils import download_url, download_and_extract_archive, extract_archive, makedir_exist_ok, verify_str_arg, check_integrity
+from torchvision.datasets.utils import download_url, download_and_extract_archive, extract_archive, verify_str_arg, check_integrity
 
 
 class MNIST_soft(VisionDataset):
@@ -128,8 +128,8 @@ class MNIST_soft(VisionDataset):
         if self._check_exists():
             return
 
-        makedir_exist_ok(self.raw_folder)
-        makedir_exist_ok(self.processed_folder)
+        os.makedirs(path, exist_ok=True)(self.raw_folder)
+        os.makedirs(path, exist_ok=True)(self.processed_folder)
 
         # download files
         for url, md5 in self.resources:
